@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>Check BPF syntax</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="https://biot.com/site.css" type="text/css">
+  </head>
+  <body id="main">
+    <h1 style="margin-top:10px;">Check BPF Syntax</h1>
+    <div id="pagecontent">
+      <h2>About</h2>
+      <p>Use these API endpoints to check <a href="https://linux.die.net/man/7/pcap-filter">BPF</a> syntax.
+        Browser javascript can use this, which is its advantage over a local utility.</p>
+      <ul>
+        <li><code>/status/{filter}</code> Check whether a capture filter is valid (e.g. <a href="/status/ip arp">checkbpf.net/status/ip arp</a>)</li>
+        <li><code>/code/{filter}</code> Get the a capture filter's BPF code (e.g. <a href="/code/!dst port 135 || ether[0] & 1 = 0">checkbpf.net/code/!dst port 135 || ether[0] & 1 = 0</a>)</li>
+      </ul>
+      <p>You can paste the capture filter after /status or /code and you should get a useful response. Note how symbols and spaces are used in the url query.</p>
+      <img src="https://dl.dropboxusercontent.com/s/9vxphatse0o1n2e/checkbpf_example.png" alt="bpf syntax in url query" />
+      <p>Wireshark is also a great resource for <a href="https://wiki.wireshark.org/CaptureFilters">Capture Filter usage</a>.</p>
+      <h2>API endpoints</h2>
+      <p><i>For any endpoint, wget can be used or the filter can be pasted directly in the browser</i></p>
+      <h3>/status</h3>
+      <p>Showing "arp" and "ip arp", which are valid and invalid capture filters respectively.</p>
+      <pre>
+$ wget -qO- 'checkbpf.net/status/arp'
+{"valid":"true","error":""}
+$ wget -qO- 'checkbpf.net/status/ip arp'
+{"valid":"false","error":"syntax error in filter expression: syntax error"}
+      </pre>
+      <h3>/code</h3>
+      <p>This capture filter matches the <a href="https://www.sans.org/security-resources/malwarefaq/w32-blasterworm.php">Blaster Worm</a>.</p>
+      <pre>
+$ wget -qO- 'checkbpf.net/code/dst port 135 and tcp port 135 and ip[2:2]==48'
+(000) ldh      [12]
+(001) jeq      #0x86dd          jt 14    jf 2
+(002) jeq      #0x800           jt 3    jf 14
+(003) ldb      [23]
+(004) jeq      #0x84            jt 14    jf 5
+(005) jeq      #0x6             jt 6    jf 14
+(006) ldh      [20]
+(007) jset     #0x1fff          jt 14    jf 8
+(008) ldxb     4*([14]&0xf)
+(009) ldh      [x + 16]
+(010) jeq      #0x87            jt 11    jf 14
+(011) ldh      [16]
+(012) jeq      #0x30            jt 13    jf 14
+(013) ret      #262144
+(014) ret      #0
+      </pre><p>Similar to "ip arp", we can test /code with invalid capture filters:</p><pre>
+$ wget -qO- 'checkbpf.net/code/dst port 66666'
+QUERY ERROR
+That string isn't a valid capture filter (illegal port number 66666 > 65535).
+See the User's Guide for a description of the capture filter syntax.
+      </pre>
+      <h2>Valid Characters</h2>
+      <p>You can use curl with a query key of 'q' to urlencode characters. It is unlikely that you would need
+      to use this though as the characters that are harder to encode cannot be parsed as bpf syntax anyway.
+      The following bash example queries with all printable ASCII characters and shows invalid ones.</p>
+      <pre>
+$ ASCII="$(python -c "print(''.join(chr(x) for x in range(31,127)))")"
+$ echo $ASCII
+ !"#$%%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+$ curl -G 'checkbpf.net/status/' --data-urlencode q="${ASCII}" && echo
+{"valid":false,"error":"Invalid BPF Characters:[\"#$%%'*+,/;?@^_`{}~]"}
+      </pre>
+    </div>
+  </body>
+</html>

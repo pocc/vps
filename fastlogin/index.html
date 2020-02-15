@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Inspired by planyway.com and the hugo vex theme (https://themes.gohugo.io/theme/vex-hugo/#/) -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css" />
+    <script type="text/javascript" src="js/index.js" defer></script>
+    <script type="text/javascript" src="js/faq.js" defer></script>
+    <script type="text/javascript" src="js/tos.js" defer></script>
+    <script src="https://js.stripe.com/v3"></script>
+  </head>
+  <body class="site">
+    <div id="header">
+      <div class="container" id="title_container">
+        <img id="logo" src="images/logo.png" alt="Login Faster logo"/>
+        <a id="features_tab_link" for="features_tab" class="nav_tab active_tab_link">Features</a>
+        <a id="tos_tab_link" for="tos_tab" class="nav_tab">TOS</a>
+        <a id="faq_tab_link" for="faq_tab" class="nav_tab">Help</a>
+      </div>
+    </div>
+    <main class="site_content">
+      <div id="features_tab" class="tab_section active_tab">
+        <div class="container features_container" id="cover">
+          <div class="flex_item video_item left_item">
+            <img id="orgs_choice_img" src="images/orgs_choice_page4_withX.png" alt="orgs_choice_page"/>
+          </div>
+          <div id="hook" class="flex_item text_item right_item">
+            <h2>&nbsp;Never&nbsp;"choose" an&nbsp;org&nbsp;again!</h2>
+          </div>
+        </div>
+        <div class="container features_container orange_bkgd">
+          <div class="flex_item video_item left_item">
+            <video playsinline autoplay muted loop>
+              <source src="video/login.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="flex_item text_item right_item">
+            <h2>Login&nbsp;in 2&nbsp;seconds</h2>
+            <p class="subtext">instead of 15</p>
+          </div>
+        </div>
+        <div class="container features_container">
+          <div class="flex_item video_item right_item">
+            <video playsinline autoplay muted loop>
+              <source src="video/resume_session.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="flex_item text_item left_item">
+            <h2>Back&nbsp;button resumes&nbsp;a&nbsp;session</h2>
+            <p class="subtext">Pick up where you left off before the sign-in timeout</p>
+          </div>
+        </div>
+        <div class="container features_container orange_bkgd">
+        <div class="flex_item video_item left_item">
+          <video playsinline autoplay muted loop>
+              <source src="video/switch_user.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="flex_item text_item right_item">
+            <h2>Switch&nbsp;between users&nbsp;quickly</p>
+            <p class="subtext">For managing customers with separate accounts.</p>
+          </div>
+        </div>
+        <div id="footer">
+          <div id="footer_container" class="col_container">
+            <h3 id="pricing_header">Simple pricing for great value</h3>
+            <table id="price_table" class="flex_item">
+              <thead>
+                <th>
+                  <div id="billing_slider">
+                    <div id="monthly_billing" class="billing_text">Monthly</div>
+                    <label class="switch">
+                      <input type="checkbox" id="billing_checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
+                    <div id="annual_billing" class="billing_text active_billing">
+                      <div class="billing_text">Annual</div>
+                      <div class="billing_discount">Save 25&#37;</div>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div class="col_container">
+                    <div class="th_text">Trial</div>
+                    <div class="price_container">
+                      <div id="currency" class="price_small">$</div>
+                      <div id="trial_price_int" class="price_large">0</div>
+                      <div id="trial_price_decimal" class="price_small">00</div>
+                    </div>
+                    <div class="per_month">per month</div>
+                    <button onclick="window.open('https://chrome.google.com/webstore/search/login%20faster');">Get started</button>
+                  </div>
+                </th>
+                <th>
+                  <div class="col_container">
+                    <div class="th_text">Pro</div>
+                    <div class="price_container">
+                      <div id="currency" class="price_small">$</div>
+                      <div id="pro_price_int" class="price_large">0</div>
+                      <div id="pro_price_decimal" class="price_small">99</div>
+                    </div>
+                    <div class="per_month">per month</div>
+                    <button
+                      class="stripe_checkout_btn"
+                      id="checkout-button"
+                      role="link"
+                    >Purchase now
+                    </button>
+                    <div id="error-message"></div>
+                    <script src="js/stripe_plans.js"></script>
+                  </div>
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Skip Org Choices Page</td>
+                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg"></td>
+                </tr>
+                <tr>
+                  <td>Login 10X Faster</td>
+                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg"></td>
+                </tr>
+                <tr>
+                  <td>Add User Dropdown</td>
+                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg"></td>
+                </tr>
+                <tr>
+                  <td>Switch between Users</td>
+                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg"></td>
+                </tr>
+                <tr>
+                  <td>
+                    Unlimited Usage
+                  </td>
+                  <td>
+                    One week
+                  </td>
+                  <td><img src="images/fa-check.svg"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>    
+      </div>
+      <div id="faq_tab" class="tab_section text_block">
+      </div>
+      <div id="tos_tab" class="tab_section text_block">
+      </div>
+    </main>
+  </body>
+</html>
