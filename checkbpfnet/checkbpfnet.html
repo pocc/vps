@@ -1,8 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Check BPF syntax</title>
+    <meta name="author" content="Ross Jacobs">
+    <meta name="description" content="Check BPF syntax with only client-side javascript.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" href="https://biot.com/site.css" type="text/css">
+    <link rel="stylesheet" href="biot.css" type="text/css">
   </head>
   <body id="main">
     <h1 style="margin-top:10px;">Check BPF Syntax</h1>
@@ -15,7 +20,7 @@
         <li><code>/code/{filter}</code> Get the a capture filter's BPF code (e.g. <a href="/code/!dst port 135 || ether[0] & 1 = 0">checkbpf.net/code/!dst port 135 || ether[0] & 1 = 0</a>)</li>
       </ul>
       <p>You can paste the capture filter after /status or /code and you should get a useful response. Note how symbols and spaces are used in the url query.</p>
-      <img src="https://dl.dropboxusercontent.com/s/9vxphatse0o1n2e/checkbpf_example.png" alt="bpf syntax in url query" />
+      <img src="img/checkbpf_example.png" alt="bpf syntax in url query" />
       <p>Wireshark is also a great resource for <a href="https://wiki.wireshark.org/CaptureFilters">Capture Filter usage</a>.</p>
       <h2>API endpoints</h2>
       <p><i>For any endpoint, wget can be used or the filter can be pasted directly in the browser</i></p>
@@ -60,7 +65,7 @@ See the User's Guide for a description of the capture filter syntax.
 $ ASCII="$(python -c "print(''.join(chr(x) for x in range(31,127)))")"
 $ echo $ASCII
  !"#$%%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-$ curl -G 'checkbpf.net/status/' --data-urlencode q="${ASCII}" && echo
+$ curl -L -G 'checkbpf.net/status/' --data-urlencode q="${ASCII}" && echo
 {"valid":false,"error":"Invalid BPF Characters:[\"#$%%'*+,/;?@^_`{}~]"}
       </pre>
     </div>

@@ -22,7 +22,7 @@ func main() {
 	// Use .* as match so that all characters (including ?) are included
 	router.HandleFunc("/status/{filter:.*}", checkbpfnet.Status).Host("checkbpf.net").Methods("GET")
 	router.HandleFunc("/code/{filter:.*}", checkbpfnet.Code).Host("checkbpf.net").Methods("GET")
-	//router.PathPrefix("/").Handler(http.FileServer(http.Dir("./checkbpfnet"))).Host("checkbpf.net")
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./checkbpfnet"))).Host("checkbpf.net")
 
 	/***** fastlog.in *****/
 	router.HandleFunc("/", fastlogin.HomePage).Host("fastlog.in")

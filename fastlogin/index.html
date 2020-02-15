@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- Inspired by planyway.com and the hugo vex theme (https://themes.gohugo.io/theme/vex-hugo/#/) -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Fast Login - Chrome Extension to expedite Meraki login</title>
+    <meta name="author" content="Ross Jacobs">
+    <meta name="description" content="Product page for the Fast Login chrome extension.">
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/custom.css" />
@@ -76,9 +80,9 @@
                   <div id="billing_slider">
                     <div id="monthly_billing" class="billing_text">Monthly</div>
                     <label class="switch">
-                      <input type="checkbox" id="billing_checkbox" checked>
+                      <input type="checkbox" aria-label="monthly vs annual billing toggle" id="billing_checkbox" checked>
                       <span class="slider round"></span>
-                    </label>
+		    </label>
                     <div id="annual_billing" class="billing_text active_billing">
                       <div class="billing_text">Annual</div>
                       <div class="billing_discount">Save 25&#37;</div>
@@ -89,7 +93,7 @@
                   <div class="col_container">
                     <div class="th_text">Trial</div>
                     <div class="price_container">
-                      <div id="currency" class="price_small">$</div>
+                      <div class="currency price_small">$</div>
                       <div id="trial_price_int" class="price_large">0</div>
                       <div id="trial_price_decimal" class="price_small">00</div>
                     </div>
@@ -101,7 +105,7 @@
                   <div class="col_container">
                     <div class="th_text">Pro</div>
                     <div class="price_container">
-                      <div id="currency" class="price_small">$</div>
+                      <div class="currency price_small">$</div>
                       <div id="pro_price_int" class="price_large">0</div>
                       <div id="pro_price_decimal" class="price_small">99</div>
                     </div>
@@ -120,23 +124,23 @@
               <tbody>
                 <tr>
                   <td>Skip Org Choices Page</td>
-                  <td><img src="images/fa-check.svg"></td>
-                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
                 </tr>
                 <tr>
                   <td>Login 10X Faster</td>
-                  <td><img src="images/fa-check.svg"></td>
-                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
                 </tr>
                 <tr>
                   <td>Add User Dropdown</td>
-                  <td><img src="images/fa-check.svg"></td>
-                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
                 </tr>
                 <tr>
                   <td>Switch between Users</td>
-                  <td><img src="images/fa-check.svg"></td>
-                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
                 </tr>
                 <tr>
                   <td>
@@ -145,7 +149,7 @@
                   <td>
                     One week
                   </td>
-                  <td><img src="images/fa-check.svg"></td>
+                  <td><img src="images/fa-check.svg" alt="checkmark icon"></td>
                 </tr>
               </tbody>
             </table>
