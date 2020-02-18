@@ -22,12 +22,14 @@ func main() {
 	// Use .* as match so that all characters (including ?) are included
 	router.HandleFunc("/status/{filter:.*}", checkbpfnet.Status).Host("checkbpf.net").Methods("GET")
 	router.HandleFunc("/code/{filter:.*}", checkbpfnet.Code).Host("checkbpf.net").Methods("GET")
+	// Serve files in homepage
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./checkbpfnet"))).Host("checkbpf.net")
 
 	/***** fastlog.in *****/
 	router.HandleFunc("/", fastlogin.HomePage).Host("fastlog.in")
 	// For user database queries
 	router.HandleFunc("/auth/", fastlogin.Auth).Host("fastlog.in").Methods("POST")
+	// Serve files in homepage
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./fastlogin"))).Host("fastlog.in")
 
 	log.Fatal(certmagic.HTTPS([]string{"checkbpf.net", "fastlog.in"}, router))

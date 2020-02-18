@@ -5,6 +5,7 @@ import (
     "io/ioutil"
     "net/http"
     "github.com/pocc/vpssites/logger"
+    "github.com/pocc/vpssites/stripeclient"
     "encoding/json"
 )
 
@@ -38,8 +39,8 @@ func Auth(w http.ResponseWriter, r *http.Request) {
 	httpFail(w, jsonErr)
         return
     }
-    jsonData, _ := json.Marshal(custrequest)
-    w.Write(jsonData)
+    resp := stripeclient.CheckAccess(custrequest.Email, custrequest.Requester, custrequest.Hash)
+    w.Write(resp)
 }
 
 func httpFail(w http.ResponseWriter, err error) {
