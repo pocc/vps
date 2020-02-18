@@ -1,8 +1,11 @@
 /* Minimal javascript to switch between tabs */
 (() => {
   if (window.location.href.includes('#features')) {
-    switchTab('features_tab');
+    switchTab('features_tab_link');
   }
+  document.getElementById("pricing_tab_link").addEventListener('click', () => {
+    switchTab('features_tab_link');
+  });
   const tabs = document.getElementsByClassName('nav_tab');
   for (const tab of tabs) {
     tab.addEventListener('click', (e) => {

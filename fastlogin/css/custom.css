@@ -195,15 +195,16 @@ h2 {
 /*****************************************************************************
   Using dumb tabs (hide/show section) to avoid using too much javascript
 *****************************************************************************/
-.nav_tab {
+.nav_tab, #pricing_tab_link {
   font-size: 20px;
   color: #333;
   margin: 1vh 2vh 0vh 2vh;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .active_tab_link {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .tab_section {
