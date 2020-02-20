@@ -3,6 +3,10 @@
   if (window.location.href.includes('#features')) {
     switchTab('features_tab_link');
   }
+  if (window.location.href.includes('#success')) {
+    alert("Thank you for purchasing Fast Login! You should be able to use your extension immediately.");
+    window.location.hash = ""
+  }
   document.getElementById("pricing_tab_link").addEventListener('click', () => {
     switchTab('features_tab_link');
   });

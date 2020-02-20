@@ -11,7 +11,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/pocc/vpssites/logger"
+	"github.com/pocc/vps/logger"
 )
 
 func callDumpcap(filter string) ([]byte, error) {

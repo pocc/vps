@@ -4,8 +4,8 @@ import (
     "fmt"
     "io/ioutil"
     "net/http"
-    "github.com/pocc/vpssites/logger"
-    "github.com/pocc/vpssites/stripeclient"
+    "github.com/pocc/vps/logger"
+    "github.com/pocc/vps/stripeclient"
     "encoding/json"
 )
 

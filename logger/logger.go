@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -27,21 +26,9 @@ func initWriter(
 }
 
 func InitLog() {
-	bpfLog, err := os.OpenFile("/var/log/checkbpf.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	bpfLog, err := os.OpenFile("./checkbpf.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal(err)
-	}
-	if err != nil {
-		fmt.Println("Unable to write logfile in /var/log", err)
-		home, userHomeErr := os.UserHomeDir()
-		if userHomeErr != nil {
-			log.Fatal("Unable to determine user's dir", userHomeErr)
-		}
-		bpfLog2, err2 := os.Create(home + "/bpfcheck.log")
-		if err2 != nil {
-			log.Fatal("Unable to write logfile in ~", err2)
-		}
-		bpfLog = bpfLog2
 	}
 	initWriter(bpfLog, bpfLog)
 }

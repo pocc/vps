@@ -6,9 +6,9 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/mholt/certmagic"
-	"github.com/pocc/vpssites/checkbpfnet"
-	"github.com/pocc/vpssites/fastlogin"
-	"github.com/pocc/vpssites/logger"
+	"github.com/pocc/vps/checkbpfnet"
+	"github.com/pocc/vps/fastlogin"
+	"github.com/pocc/vps/logger"
 )
 
 func main() {
